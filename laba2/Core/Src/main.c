@@ -42,11 +42,11 @@
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart2;
 
-/* USER CODE BEGIN PV */
+/* Variables initialization start PV */
 uint8_t rx_byte;
 char line[64];
 uint8_t idx = 0;
-/* USER CODE END PV */
+/* Variables initialization end PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -91,11 +91,11 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
-  /* USER CODE BEGIN 2 */
+  /* Initialize receiver 2 start */
   HAL_UART_Transmit(&huart2, (uint8_t*)"Welcome to device\r\n", 19, 100);
   HAL_UART_Receive_IT(&huart2, &rx_byte, 1);
 
-  /* USER CODE END 2 */
+  /* Initialize receiver 2 end */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -212,7 +212,7 @@ static void MX_GPIO_Init(void)
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
-/* USER CODE BEGIN 4 */
+/* Rx complete callback 4 start */
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
@@ -241,7 +241,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     }
 }
 
-/* USER CODE END 4 */
+/*  Rx complete callback end */
 
 /**
   * @brief  This function is executed in case of error occurrence.
